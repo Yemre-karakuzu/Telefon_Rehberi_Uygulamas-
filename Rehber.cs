@@ -57,16 +57,25 @@ namespace Proje1
                     KisiEkle(name, lastName, numara);
                     break;
                 case 2:
-                    Console.WriteLine("Durum 2");
+                    Console.WriteLine(" Lütfen numarasını silmek istediğiniz kişinin adını ya da soyadını giriniz: ");
+                    string silinecekKisi = Convert.ToString(Console.ReadLine());
+                    kisiSil(silinecekKisi);
                     break;
                 case 3:
-                    Console.WriteLine("Durum 3");
+                    Console.WriteLine(" Lütfen numarasını güncellemek istediğiniz kişinin adını ya da soyadını giriniz: ");
+                    string guncellenecekKisi = Convert.ToString(Console.ReadLine());
+                    kisiBilgisiGuncelle(guncellenecekKisi);
                     break;
                 case 4:
                     RehberiListele();
                     break;
                 case 5:
-                    Console.WriteLine("Durum 5");
+                    Console.WriteLine("Arama yapmak istediğiniz tipi seçiniz.");
+                    Console.WriteLine("**********************************************");
+                    Console.WriteLine("İsim veya soyisime göre arama yapmak için: (1)");
+                    Console.WriteLine("Telefon numarasına göre arama yapmak için: (2)");
+                    int arama = int.Parse(Console.ReadLine());
+                    kisiAra(arama);
                     break;
                 case 6:
                     Environment.Exit(0);
@@ -91,6 +100,25 @@ namespace Proje1
             kisiler.Add(new Kisi("Ahmet ", "Mehmet", 323456));
             kisiler.Add(new Kisi("Ali", "Veli", 123451));
             RehberListesi = kisiler;
+        }
+        public void kisiAra(int secenek)
+        {
+            if (secenek == 1)
+            {
+
+            }
+            else
+            {
+
+            }
+        }
+        public void kisiSil(string nameOrLastName)
+        {
+
+        }
+        public void kisiBilgisiGuncelle(string nameOrLastName)
+        {
+
         }
     }
 }
