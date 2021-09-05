@@ -25,11 +25,12 @@ namespace Proje1
         {
             Console.WriteLine(" Telefon Rehberi");
             Console.WriteLine("**********************************************");
-            for (int i = 0; i < rehberListesi.Count; i++)
+
+            foreach (var item in RehberListesi)
             {
-                Console.WriteLine("isim : " + rehberListesi[i].FirstName);
-                Console.WriteLine("Soyisim : " + rehberListesi[i].LastName);
-                Console.WriteLine("Telefon Numarası : " + rehberListesi[i].Numara);
+                Console.WriteLine("isim : " + item.FirstName);
+                Console.WriteLine("Soyisim : " + item.LastName);
+                Console.WriteLine("Telefon Numarası : " + item.Numara);
                 Console.WriteLine("-------");
             }
         }
@@ -81,14 +82,7 @@ namespace Proje1
                     Environment.Exit(0);
                     break;
             }
-            Console.WriteLine("Devam etmek istiyor musunuz ");
-            Console.WriteLine("(1)Evet ");
-            Console.WriteLine("(2)Hayır ");
-            int temp = int.Parse(Console.ReadLine());
-            if (temp == 1)
-                ChoseList();
-            else
-                Environment.Exit(0);
+            programDursunMu();
 
         }
         public void rehberiDoldur()
@@ -114,11 +108,34 @@ namespace Proje1
         }
         public void kisiSil(string nameOrLastName)
         {
-
+            bool flag = false;
+            for (int i = 0; i < rehberListesi.Count; i++)
+            {
+                if (rehberListesi[i].FirstName == nameOrLastName || rehberListesi[i].LastName == nameOrLastName)
+                {
+                    Console.WriteLine("Şu Kişi Silindi" + rehberListesi[i].FirstName + " " + rehberListesi[i].LastName);
+                    rehberListesi.RemoveAt(i);
+                    flag = true;
+                    break;
+                }
+            }
+            if (!flag) Console.WriteLine("Aranan Kişi Bulunamadı! ");
+            programDursunMu();
         }
         public void kisiBilgisiGuncelle(string nameOrLastName)
         {
 
+        }
+        public void programDursunMu()
+        {
+            Console.WriteLine("Devam etmek istiyor musunuz ");
+            Console.WriteLine("(1)Evet ");
+            Console.WriteLine("(2)Hayır ");
+            int temp = int.Parse(Console.ReadLine());
+            if (temp == 1)
+                ChoseList();
+            else
+                Environment.Exit(0);
         }
     }
 }
