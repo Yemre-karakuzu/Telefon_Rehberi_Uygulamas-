@@ -97,13 +97,40 @@ namespace Proje1
         }
         public void kisiAra(int secenek)
         {
+            bool flag = false;
             if (secenek == 1)
             {
-
+                Console.WriteLine("İsim veya soyisime giriniz!: ");
+                string arama = Convert.ToString(Console.ReadLine());
+                for (int i = 0; i < rehberListesi.Count; i++)
+                {
+                    if (rehberListesi[i].FirstName == arama || rehberListesi[i].LastName == arama)
+                    {
+                        Console.WriteLine("isim : " + rehberListesi[i].FirstName);
+                        Console.WriteLine("Soyisim : " + rehberListesi[i].LastName);
+                        Console.WriteLine("Telefon Numarası : " + rehberListesi[i].Numara);
+                        Console.WriteLine("-------");
+                        flag = true;
+                    }
+                }
+                if (!flag) Console.WriteLine("Aranan Kişi Bulunamadı! ");
             }
             else
             {
-
+                Console.WriteLine("Numara giriniz!: ");
+                int arama = int.Parse(Console.ReadLine());
+                for (int i = 0; i < rehberListesi.Count; i++)
+                {
+                    if (rehberListesi[i].Numara == arama)
+                    {
+                        Console.WriteLine("isim : " + rehberListesi[i].FirstName);
+                        Console.WriteLine("Soyisim : " + rehberListesi[i].LastName);
+                        Console.WriteLine("Telefon Numarası : " + rehberListesi[i].Numara);
+                        Console.WriteLine("-------");
+                        flag = true;
+                    }
+                }
+                if (!flag) Console.WriteLine("Aranan Kişi Bulunamadı! ");
             }
         }
         public void kisiSil(string nameOrLastName)
@@ -124,7 +151,25 @@ namespace Proje1
         }
         public void kisiBilgisiGuncelle(string nameOrLastName)
         {
-
+            bool flag = false;
+            for (int i = 0; i < rehberListesi.Count; i++)
+            {
+                if (rehberListesi[i].FirstName == nameOrLastName || rehberListesi[i].LastName == nameOrLastName)
+                {
+                    Console.WriteLine("Lütfen değiştirmek istediğiniz isimi giriniz: ");
+                    string name = Convert.ToString(Console.ReadLine());
+                    Console.WriteLine("Lütfen değiştirmek istediğiniz soyisimi giriniz: ");
+                    string lastName = Convert.ToString(Console.ReadLine());
+                    Console.WriteLine("Lütfen değiştirmek istediğiniz numarayi giriniz: ");
+                    int numara = int.Parse(Console.ReadLine());
+                    rehberListesi[i].FirstName = name;
+                    rehberListesi[i].LastName = lastName;
+                    rehberListesi[i].Numara = numara;
+                    flag = true;
+                    break;
+                }
+            }
+            if (!flag) Console.WriteLine("Aranan Kişi Bulunamadı! ");
         }
         public void programDursunMu()
         {
